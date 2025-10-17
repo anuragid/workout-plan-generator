@@ -9,30 +9,60 @@
 <body>
     <div class="container">
         <header>
-            <h1>Workout Plan Generator</h1>
-            <p class="tagline">Create your personalized fitness journey</p>
+            <h1>Dragon Ball Training Generator</h1>
+            <p class="tagline">Train like your favorite Z Warriors!</p>
         </header>
         
         <main>
-            <section class="cta-section">
-                <h2>Get Started</h2>
-                <p>Generate a customized workout plan tailored to your goals and fitness level.</p>
-                <button id="generateBtn" class="cta-button">Create My Plan</button>
+            <section class="character-selection">
+                <h2>Choose Your Mentor</h2>
+                <p>Select a character to get a specialized training program</p>
+                <div class="character-grid">
+                    <div class="character-card" data-character="goku">
+                        <div class="character-image goku" aria-label="Goku character image"></div>
+                        <h3>Goku</h3>
+                        <p>All-around strength and power training</p>
+                        <div class="power-level">Base Power Level: 9000+</div>
+                    </div>
+                    <div class="character-card" data-character="vegeta">
+                        <div class="character-image vegeta" aria-label="Vegeta character image"></div>
+                        <h3>Vegeta</h3>
+                        <p>Intense strength and endurance focus</p>
+                        <div class="power-level">Base Power Level: 8500+</div>
+                    </div>
+                    <div class="character-card" data-character="piccolo">
+                        <div class="character-image piccolo" aria-label="Piccolo character image"></div>
+                        <h3>Piccolo</h3>
+                        <p>Mental strength and technique mastery</p>
+                        <div class="power-level">Base Power Level: 7500+</div>
+                    </div>
+                    <div class="character-card" data-character="gohan">
+                        <div class="character-image gohan" aria-label="Gohan character image"></div>
+                        <h3>Gohan</h3>
+                        <p>Balance of mind and body training</p>
+                        <div class="power-level">Base Power Level: 8000+</div>
+                    </div>
+                </div>
             </section>
 
-            <section class="features">
-                <div class="feature-card">
-                    <h3>Personalized</h3>
-                    <p>Plans adapted to your specific needs and goals</p>
+            <section class="training-level">
+                <h2>Select Training Level</h2>
+                <div class="level-buttons">
+                    <button class="level-btn" data-level="earthling">Earthling</button>
+                    <button class="level-btn" data-level="saiyan">Saiyan</button>
+                    <button class="level-btn" data-level="super-saiyan">Super Saiyan</button>
                 </div>
-                <div class="feature-card">
-                    <h3>Simple</h3>
-                    <p>Easy-to-follow workouts with clear instructions</p>
+            </section>
+
+            <section class="workout-plan" style="display: none;">
+                <h2>Your Training Program</h2>
+                <div class="training-details"></div>
+                <div class="gravity-setting">
+                    <label for="gravity">Training Gravity Level:</label>
+                    <input type="range" id="gravity" min="1" max="100" value="1">
+                    <span class="gravity-value">1x Earth's Gravity</span>
                 </div>
-                <div class="feature-card">
-                    <h3>Flexible</h3>
-                    <p>Adjust your plan as you progress</p>
-                </div>
+                <button id="startTrainingBtn" class="cta-button">Start Training!</button>
             </section>
         </main>
 

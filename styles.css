@@ -9,7 +9,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, #7dd1f3 0%, #3498db 100%);
+    min-height: 100vh;
 }
 
 .container {
@@ -65,25 +66,157 @@ main {
     background-color: #2980b9;
 }
 
-/* Features section */
-.features {
+/* Character Selection */
+.character-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
 
-.feature-card {
-    background-color: white;
+.character-card {
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.character-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.character-card.selected {
+    border: 3px solid #ffd700;
+    animation: powerUp 1s infinite;
+}
+
+.character-image {
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+/* Character specific placeholder styles */
+.character-image {
+    position: relative;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-image::before {
+    font-size: 2rem;
+}
+
+.character-image.goku::before {
+    content: "🥋";
+}
+
+.character-image.vegeta::before {
+    content: "👑";
+}
+
+.character-image.piccolo::before {
+    content: "🧘";
+}
+
+.character-image.gohan::before {
+    content: "📚";
+}
+
+/* Add hover effect for placeholder images */
+.character-image:hover::before {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+}
+
+.character-card:hover .character-image {
+    transform: scale(1.1);
+}
+
+.power-level {
+    font-weight: bold;
+    color: #e74c3c;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Training Level Section */
+.training-level {
+    text-align: center;
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.level-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.level-btn {
+    background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.level-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.level-btn.selected {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.6);
+}
+
+/* Animations */
+@keyframes powerUp {
+    0% {
+        box-shadow: 0 0 5px #ffd700;
+    }
+    50% {
+        box-shadow: 0 0 20px #ffd700;
+    }
+    100% {
+        box-shadow: 0 0 5px #ffd700;
+    }
+}
+
+/* Gravity Control */
+.gravity-setting {
+    margin: 2rem 0;
     text-align: center;
 }
 
-.feature-card h3 {
-    color: #2c3e50;
-    margin-bottom: 1rem;
+#gravity {
+    width: 80%;
+    max-width: 400px;
+    margin: 1rem 0;
 }
 
 /* Footer styles */
