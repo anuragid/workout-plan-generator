@@ -9,14 +9,41 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #7dd1f3 0%, #3498db 100%);
+    background: linear-gradient(180deg, #87CEEB 0%, #1E90FF 100%);
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated clouds */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 120'%3E%3Cpath fill='%23ffffff' fill-opacity='0.4' d='M0,50 Q150,20 300,50 T600,50 T900,50 L1000,50 L1000,0 L0,0 Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+    animation: floatClouds 60s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatClouds {
+    from { background-position-x: 0; }
+    to { background-position-x: 1000px; }
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* Header styles */
@@ -75,20 +102,38 @@ main {
 }
 
 .character-card {
-    background-color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.character-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .character-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.7);
+}
+
+.character-card:hover::before {
+    opacity: 1;
 }
 
 .character-card.selected {
@@ -172,8 +217,8 @@ main {
 }
 
 .level-btn {
-    background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
-    border: none;
+    background: linear-gradient(135deg, #FFA500 0%, #FF6B00 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
     padding: 1rem 2rem;
     border-radius: 50px;
@@ -182,11 +227,31 @@ main {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.level-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+    transition: transform 0.6s;
+    pointer-events: none;
 }
 
 .level-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+}
+
+.level-btn:hover::after {
+    transform: rotate(45deg) translate(50%, 50%);
 }
 
 .level-btn.selected {
