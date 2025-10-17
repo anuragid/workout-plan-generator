@@ -141,7 +141,7 @@ main {
     transform: scale(1.2);
     transition: transform 0.3s ease;
 }
-}
+
 
 .character-card:hover .character-image {
     transform: scale(1.1);
